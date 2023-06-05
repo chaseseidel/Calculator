@@ -11,10 +11,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: black;
+    background-color: rgb(20, 19, 19);
     padding: 40px;
     min-height: 640px;
     min-width: 400px;
+    border-radius: 16px;
 }
 
 .display-container {
@@ -51,14 +52,26 @@ body {
     background-color: orangered;
 }
 
+.operator:hover, #equals:hover {
+    background-color: rgb(250, 136, 94);
+}
+
 .top {
     color: black;
     background-color: rgb(163, 163, 163);
 }
 
+.top:hover {
+    background-color: rgb(230, 230, 230);
+}
+
 .digit, #dot {
     color: white;
     background-color: rgb(75, 75, 75);
+}
+
+.digit:hover, #dot:hover {
+    background-color: rgb(139, 138, 138);
 }
 
 button {
