@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-color: rgb(0, 11, 92);
+    background-color: black;
     padding: 40px;
     min-height: 640px;
     min-width: 400px;
@@ -35,38 +35,34 @@ body {
 }
 
 .buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: grid;
     min-height: 440px;
     min-width: 400px;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(5, 88px);
 }
 
-.top-container {
-    display: flex;
-    min-height: 100px;
-    min-width: 400px;
+#zero {
+    grid-column: span 2;
 }
 
-.bottom-container {
-    display: flex;
-    min-height: 340px;
-    min-width: 400px;
+.operator, #equals {
+    color: white;
+    background-color: orangered;
 }
 
-.column {
-    display: flex;
-    flex-direction: column;
-    min-height: 340px;
-    min-width: 100px;
+.top {
+    color: black;
+    background-color: rgb(163, 163, 163);
 }
 
-.btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    background-color: rgb(88, 88, 88);
-    border-radius: 10px;
+.digit, #dot {
+    color: white;
+    background-color: rgb(75, 75, 75);
+}
+
+button {
+    border-radius: 30px;
+    border-style: none;
     margin: 5px;
 }
