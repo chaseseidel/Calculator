@@ -12,7 +12,7 @@ const multiply = function(a, b) {
 }
 
 const divide = function(a, b) {
-    return b == 0 ? "Division by 0" : a / b;
+    return b == 0 ? "UNDEFINED" : a / b;
 }
 
 const operate = function(operator, a, b) {
@@ -41,6 +41,7 @@ const operate = function(operator, a, b) {
 //number variables
 let firstNumber;
 let secondNumber;
+let operatorVariable;
 
 //display
 let displayVariable;
@@ -52,20 +53,29 @@ function updateDisplay() {
 //digit buttons
 const digits = document.querySelectorAll('.digit');
 digits.forEach(digit => digit.addEventListener('click', () => {
-    displayVariable = digit.textContent;
+    if (display.textContent == 0) {
+        displayVariable = digit.textContent;
+    }
+    else {
+        !operatorVariable ? displayVariable += digit.textContent: displayVariable += digit.textContent;
+    }
     updateDisplay();
-    !firstNumber || !operatorVariable ? firstNumber = parseInt(digit.textContent) 
-    : secondNumber = parseInt(digit.textContent);
 }))
 
 //operator buttons
-let operatorVariable;
 const operators = document.querySelectorAll('.operator');
 operators.forEach(operator => operator.addEventListener('click', () => {
     operatorVariable = operator.id;
+    firstNumber = parseFloat(displayVariable);
+    displayVariable = '';
 }))
 const equals = document.getElementById('equals');
-equals.addEventListener('click', () => operate(operatorVariable, firstNumber, secondNumber));
+equals.addEventListener('click', () => { 
+    secondNumber = parseFloat(displayVariable);
+    operate(operatorVariable, firstNumber, secondNumber);
+    displayVariable = '';
+    operatorVariable = null;
+});
 
 //top buttons
 const clear = document.getElementById('clear');
@@ -74,5 +84,28 @@ clear.addEventListener('click', () => {
     secondNumber = null;
     displayVariable = 0;
     operatorVariable = null;
+    updateDisplay();
+})
+const sign = document.getElementById('sign');
+sign.addEventListener('click', () => {
+    displayVariable = parseFloat(displayVariable);
+    displayVariable *= -1;
+    !firstNumber || !operatorVariable ? firstNumber = displayVariable
+    : secondNumber = displayVariable;
+    updateDisplay();
+})
+const percentage = document.getElementById('percentage');
+percentage.addEventListener('click', () => {
+    displayVariable = parseFloat(displayVariable);
+    displayVariable /= 100;
+    !firstNumber || !operatorVariable ? firstNumber = displayVariable
+    : secondNumber = displayVariable;
+    updateDisplay();
+})
+
+//decimal button
+const decimal = document.getElementById('dot');
+decimal.addEventListener('click', () => {
+    displayVariable += '.';
     updateDisplay();
 })
